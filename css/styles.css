@@ -910,3 +910,132 @@ body{ padding-bottom:76px; }
   .qi-value{font-size:1.125rem}
   .qi-label{font-size:.55rem;margin-top:.125rem}
 }
+
+/* Ajustes de tablet y móvil: mantienen legibles las tarjetas y evitan solapes. */
+html{ scroll-padding-top:5.5rem; }
+
+@media(max-width:959px){
+  section{ padding-block:clamp(3.5rem,8vw,5.5rem); }
+
+  .container{ padding-inline:clamp(16px,4vw,24px); }
+
+  .site-header{ padding:calc(12px + env(safe-area-inset-top)) 0 12px; }
+  .site-header.scrolled{ padding:calc(8px + env(safe-area-inset-top)) 0 8px; }
+  .header-actions{ gap:8px; }
+  .nav-desktop{ display:none; }
+  .menu-toggle{
+    display:flex;
+    min-width:44px;
+    min-height:44px;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .mobile-nav{
+    max-height:100vh;
+    max-height:100dvh;
+    overflow-y:auto;
+    padding:calc(88px + env(safe-area-inset-top)) max(24px, env(safe-area-inset-right)) calc(32px + env(safe-area-inset-bottom)) max(24px, env(safe-area-inset-left));
+  }
+  .mobile-nav a{ min-height:48px; }
+
+  .quick-info .container{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .qi-item{ min-width:0; }
+  .qi-item:nth-child(odd){ border-right:1px solid var(--black-4); }
+  .qi-item:nth-child(even){ border-right:0; }
+  .qi-item:nth-child(n+3){ border-bottom:0; }
+  .qi-item .qi-label{ overflow-wrap:anywhere; }
+
+  .price-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .price-card{ min-width:0; padding:24px 20px; }
+  .price-amount{ flex-wrap:wrap; }
+  .price-amount .per{ flex-basis:100%; }
+
+  .group-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .location-info{ padding:clamp(24px,5vw,40px); }
+  .location-map,
+  .location-map iframe{ min-height:280px; }
+
+  .footer-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .footer-grid > :first-child{ grid-column:1 / -1; }
+
+  .contact-float{ display:none; }
+  .mobile-cta-bar{ display:flex; }
+  .mobile-cta-bar{
+    padding:10px max(16px, env(safe-area-inset-right)) calc(10px + env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+  }
+  .mobile-cta-bar .btn{ min-height:48px; }
+  body{ padding-bottom:calc(84px + env(safe-area-inset-bottom)); }
+
+  .contact-modal-overlay{ overflow-y:auto; }
+  .contact-modal{ max-height:calc(100dvh - 40px); overflow-y:auto; }
+}
+
+@media(max-width:600px){
+  .hero{
+    min-height:0;
+    justify-content:flex-start;
+    gap:clamp(24px,6vh,48px);
+    padding:104px 0 28px;
+  }
+  .hero-content{ gap:clamp(14px,4vw,20px); }
+  .hero-eyebrow{ max-width:32ch; line-height:1.4; }
+  .hero h1{ font-size:clamp(2.4rem,11vw,4rem); }
+  .hero-actions .btn{ flex:1 1 auto; justify-content:center; min-height:48px; }
+
+  .quick-info .container{ padding-inline:8px; }
+  .qi-item{ padding:14px 10px; }
+  .qi-item svg{ width:20px; height:20px; }
+  .quick-info .qi-value{ font-size:clamp(1rem,4.6vw,1.25rem); }
+  .quick-info .qi-label{ font-size:.625rem; letter-spacing:.04em; }
+
+  .price-card{ padding:20px 16px; }
+  .price-tag{
+    position:static;
+    display:inline-block;
+    margin-bottom:8px;
+  }
+  .price-amount{ font-size:clamp(1.75rem,8vw,2.4rem); }
+  .price-name{ line-height:1.3; }
+  .schedule-card{ padding:24px 20px; }
+  .schedule-row{ gap:10px; }
+  .schedule-row.today .day::after{ margin-left:6px; }
+
+  .location-map,
+  .location-map iframe{ min-height:240px; }
+  .faq-list details{ padding-inline:16px; }
+  .faq-list summary{ font-size:1rem; }
+
+  .site-footer{ padding-top:44px; }
+  .footer-grid{ grid-template-columns:1fr; gap:28px; }
+  .footer-grid > :first-child{ grid-column:auto; }
+  .footer-bottom{ flex-direction:column; }
+}
+
+@media(max-width:380px){
+  .header-cta{ display:none; }
+  .quick-info .qi-item:nth-child(3),
+  .quick-info .qi-item:nth-child(4){
+    grid-column:1 / -1;
+    border-right:0;
+  }
+  .quick-info .qi-item:nth-child(3){ border-bottom:1px solid var(--black-4); }
+  .quick-info .qi-item:nth-child(4){ justify-content:center; }
+  .price-grid{ grid-template-columns:1fr; }
+  .hero-eyebrow{ letter-spacing:.12em; }
+  .hero-actions{ flex-direction:column; }
+}
+
+@media(max-height:600px) and (max-width:959px){
+  .mobile-nav{ justify-content:flex-start; }
+  .hero{ min-height:0; padding-block:96px 24px; }
+  .hero-content{ gap:14px; }
+  .hero h1{ font-size:clamp(2rem,7vw,3.5rem); }
+  .hero-scroll{ display:none; }
+}
+
+@media(pointer:coarse){
+  .price-card:hover,
+  .group-card:hover,
+  .contact-option:hover{ transform:none; }
+}
